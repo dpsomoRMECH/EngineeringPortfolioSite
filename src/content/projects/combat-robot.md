@@ -29,7 +29,7 @@ I built a tank driven horizontal spinner. I used a variety of resources and mate
 The chassis is carbon fibre composite, which I chose after observing the amount of force the motor and weapon impart upon impact. The weapon is titanium, 4mm thick, which was cut on a CNC router. 
 
 <div style="text-align: center;">  
-  <img src="/assets/BattleBotCAD.png" alt="Current Progress" width = 80%>  
+  <img src="/assets/BattleBotCAD.png" alt="Current Progress" width = 100%>  
 </div>  
 
 ## Result
