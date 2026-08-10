@@ -4,4 +4,9 @@ import { defineConfig } from 'astro/config';
 // (used for generating correct absolute URLs, e.g. in sitemaps/meta tags)
 export default defineConfig({
   site: 'https://portfolio.deanpsomo.dev',
+  image:{
+    layout: 'constrained',
+    objectFit: 'contain',
+
+  }
 });
