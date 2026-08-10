@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allProjects = await getCollection('projects');
+const projects = allProjects.sort((a, b) => {
+  if (a.data.featured !== b.data.featured) return a.data.featured ? -1 : 1;
+  return a.data.order - b.data.order;
+});
+
+const statusLabel: Record<string, string> = {
+  shipped: 'Shipped',
+  'in-progress': 'In progress',
+  archived: 'Archived',
+};
+---
+
+<Layout title="Home">
+  <section class="hero">
+    <div class="wrap">
+      <p class="field-label">// Engineer</p>
+      <!-- EDIT ME: your name -->
+      <h1>Your Name</h1>
+      <!-- EDIT ME: your one-line role/focus -->
+      <p class="role">Backend engineer, distributed systems</p>
+      <!-- EDIT ME: 2-3 sentence bio. What you build, what you're into, what you're looking for. -->
+      <p class="bio">
+        I build systems that hold up under load and don't page anyone at 3am. This site collects
+        a handful of projects that show how I think through a problem, not just what I shipped.
+      </p>
+
+      <dl class="spec-grid">
+        <div>
+          <dt class="field-label">Stack</dt>
+          <!-- EDIT ME -->
+          <dd>Go, TypeScript, Postgres</dd>
+        </div>
+        <div>
+          <dt class="field-label">Based in</dt>
+          <!-- EDIT ME -->
+          <dd>City, Country</dd>
+        </div>
+        <div>
+          <dt class="field-label">Status</dt>
+          <!-- EDIT ME -->
+          <dd>Open to opportunities</dd>
+        </div>
+        <div>
+          <dt class="field-label">Elsewhere</dt>
+          <dd><a href="https://github.com/yourname">github</a> / <a href="https://linkedin.com/in/yourname">linkedin</a></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <hr class="dim-rule wrap" />
+
+  <section id="projects" class="wrap">
+    <p class="field-label">// Projects</p>
+    <div class="projects-grid">
+      {projects.map((project) => (
+        <a class="card" href={`/projects/${project.id}/`}>
+          <span class="status">{statusLabel[project.data.status]}</span>
+          <h3>{project.data.title}</h3>
+          <p class="summary">{project.data.summary}</p>
+          <ul class="stack-list">
+            {project.data.stack.map((tech) => <li>{tech}</li>)}
+          </ul>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <hr class="dim-rule wrap" />
+
+  <section id="contact" class="wrap contact">
+    <h2>// Contact</h2>
+    <!--
+      EDIT ME: replace YOUR_FORM_ID with a real Formspree (or Web3Forms) endpoint.
+      Sign up free at https://formspree.io, create a form, and swap the ID below.
+      Until you do this, submissions will not go anywhere.
+    -->
+    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div>
+        <label for="name">Name</label><br />
+        <input id="name" name="name" type="text" required />
+      </div>
+      <div>
+        <label for="email">Email</label><br />
+        <input id="email" name="email" type="email" required />
+      </div>
+      <div>
+        <label for="message">Message</label><br />
+        <textarea id="message" name="message" rows="5" required></textarea>
+      </div>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+</Layout>
