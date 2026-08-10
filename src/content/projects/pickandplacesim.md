@@ -6,7 +6,7 @@ role: "Solo Project"
 status: "in-progress"
 repoUrl: "https://github.com/dpsomoRMECH/ControlSystemsSimulation"
 demoUrl: ""
-date: 2026-08-9
+date: 2026-08-8
 featured: true
 order: 3
 ---
@@ -25,3 +25,4 @@ Using pygame as a graphics library within python, i'm emulating a closed-loop pi
 We are able to observe how the arm follows the reference input, and alter the controller to dictate the properties of the system. 
 
 
+## What I'd do differently
